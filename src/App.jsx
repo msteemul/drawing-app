@@ -117,18 +117,19 @@ function App() {
 
   const drawPencil = (x, y) => {
     if (!isPencilDrawing || !isMouseDown) return;
-
+  
     const context = contextRef.current;
     context.lineWidth = 2;
     context.lineCap = 'round';
-
+  
     context.beginPath();
     context.moveTo(prevX.current, prevY.current); // Start from the previous point
     context.lineTo(x, y);
     context.stroke();
-
-    prevX.current = x; // Update previous X coordinate
-    prevY.current = y; // Update previous Y coordinate
+  
+    // Update previous X and Y coordinates for the next line segment
+    prevX.current = x;
+    prevY.current = y;
   }
 
   const handleMouseMove = (e) => {
