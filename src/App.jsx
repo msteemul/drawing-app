@@ -1,5 +1,4 @@
 import './App.css'
-import Input from './components/Input';
 import { useState, useEffect, useRef } from 'react';
 import { BiRectangle } from 'react-icons/bi'
 import { HiOutlinePencil } from 'react-icons/hi'
@@ -155,7 +154,7 @@ function App() {
     context.stroke();
   }
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     if (isDrawing) {
       setIsDrawing(false);
       setEndX(null);
