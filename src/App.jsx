@@ -55,7 +55,7 @@ function App() {
   }
 
   const setDrawingMode = () => {
-    setIsDrawing(!isDrawing);
+    setIsDrawing(true);
     console.log('isDrawing',isDrawing)
   }
 
@@ -81,7 +81,7 @@ function App() {
   }
 
   const handleMouseMove = (e) => {
-    if (!isDrawing || !isLineDrawing) return;
+    if (!isDrawing) return;
     console.log(e);
     const { offsetX, offsetY } = e.nativeEvent;
     setEndX(offsetX);
@@ -138,17 +138,17 @@ function App() {
 
   return (
     <>
-    <div className='flex flex-col h-[100vh] w-full'>
+    <div className='flex flex-col h-[100vh] w-full overflow-hidden'>
       <div className='bg-neutral-800 w-full flex h-[10%] justify-start items-center p-5' > 
       <input type="text" className='rounded-xl h-[35px] w-full' placeholder="URL" onChange={handleInputChange} /> {/* Remove the parentheses here */}
       </div>
-      <div className='bg-neutral-500 flex h-[95%] items-center justify-center'>
+      <div className='bg-neutral-500 flex h-[85%] items-center justify-center'>
         <canvas 
         id="canvas" 
         className='h-[90%] w-[90%] bg-neutral-600 rounded-xl'
          ref={canvasRef} 
          onMouseDown={startDrawing}  
-         onMouseMove={handleMouseMove}
+         onMouseMove={isDrawing ? handleMouseMove : doNothing}
         onMouseUp={handleMouseUp}>
 
         </canvas>
