@@ -60,6 +60,7 @@ function App() {
   }
 
   const setLineMode = () => {
+    setIsDrawing(false);
     setIsLineDrawing(!isLineDrawing);
     console.log('isLineDrawing',isLineDrawing)
   }
@@ -77,11 +78,12 @@ function App() {
       const { offsetX, offsetY } = e.nativeEvent;
     setStartX(offsetX);
     setStartY(offsetY);
+    console.log('startX line mode',startX)
+    console.log('startY line mode',startY)
     }
   }
 
   const handleMouseMove = (e) => {
-    if (!isDrawing) return;
     console.log(e);
     const { offsetX, offsetY } = e.nativeEvent;
     setEndX(offsetX);
@@ -104,14 +106,18 @@ function App() {
   }
   
   const handleMouseUp = (e) => {
+    if (isDrawing){
     setIsDrawing(false);
     setEndX(null);
     setEndY(null);
-    if(isDrawing){
       drawRectangle();
-    } else if(isLineDrawing){
-      drawLine();
-    }
+    
+  }else if(isLineDrawing){
+    setIsLineDrawing(false);
+    setEndX(null);
+    setEndY(null);
+    drawLine();
+  }
     
   }
   
@@ -148,7 +154,7 @@ function App() {
         className='h-[90%] w-[90%] bg-neutral-600 rounded-xl'
          ref={canvasRef} 
          onMouseDown={startDrawing}  
-         onMouseMove={isDrawing ? handleMouseMove : doNothing}
+         onMouseMove={isDrawing || isLineDrawing ? handleMouseMove : doNothing}
         onMouseUp={handleMouseUp}>
 
         </canvas>
@@ -157,8 +163,8 @@ function App() {
         <div className='bg-neutral-700  flex items-center'>
         <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <MdOutlineRotateLeft color='white' /> </button>
           <button onClick={setDrawingMode} className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BiRectangle color='white' /> </button>
-          <button onClick={setLineMode} className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <HiOutlinePencil color='white' /> </button>
-          <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <AiOutlineLine color='white' /> </button>
+          <button onClick={setLineMode} className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <AiOutlineLine color='white' /> </button>
+          <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <HiOutlinePencil color='white' /> </button>
           <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BsEraser color='white' /> </button>
           <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BiText color='white' /> </button>
           <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BsArrowDownLeft color='white' /> </button>
