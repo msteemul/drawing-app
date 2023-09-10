@@ -7,8 +7,9 @@ import { MdOutlineRotateRight } from 'react-icons/md'
 import { MdOutlineRotateLeft } from 'react-icons/md'
 import { BiText } from 'react-icons/bi'
 import { BsArrowDownLeft } from 'react-icons/bs'
-import { FaRegHandPaper } from 'react-icons/fa'
+import { FaRegHandPaper, FaShare } from 'react-icons/fa'
 import { BsEraser } from 'react-icons/bs'
+import {LiaDownloadSolid} from 'react-icons/lia'
 
 function App() {
   const [url, setUrl] = useState('');
@@ -175,8 +176,9 @@ function App() {
   return (
     <>
       <div className='flex flex-col h-[100vh] w-full overflow-hidden'>
-        <div className='bg-neutral-800 w-full flex h-[10%] justify-start items-center p-5' >
+        <div className={`bg-neutral-800 w-full flex h-[10%] justify-start items-center p-5 gap-1`} >
           <input type="text" className='rounded-xl h-[35px] w-full' placeholder="URL" onChange={handleInputChange} />
+          <button className='bg-neutral-400 h-[60%] p-2 w-[50px] rounded-xl flex items-center justify-center'> <FaShare color='white' /> </button>
         </div>
         <div className='bg-neutral-500 flex h-[85%] items-center justify-center'>
           <canvas
@@ -200,6 +202,7 @@ function App() {
             <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BsArrowDownLeft color='white' /> </button>
             <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <FaRegHandPaper color='white' /> </button>
             <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <MdOutlineRotateRight color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <LiaDownloadSolid color='white' /> </button>
 
           </div>
         </div>
