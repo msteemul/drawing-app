@@ -22,7 +22,6 @@ function App() {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const prevX = useRef(null);
   const prevY = useRef(null);
-
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
@@ -93,26 +92,15 @@ function App() {
   }
 
   const startDrawing = (e) => {
-    if (isDrawing) {
-      console.log(e);
-      const { offsetX, offsetY } = e.nativeEvent;
-      setStartX(offsetX);
-      setStartY(offsetY);
-    } else if (isLineDrawing) {
-      console.log('isLineDrawing', e);
-      const { offsetX, offsetY } = e.nativeEvent;
-      setStartX(offsetX);
-      setStartY(offsetY);
-    } else if (isPencilDrawing && isMouseDown) {
-
-      const { offsetX, offsetY } = e.nativeEvent;
-      setStartX(offsetX);
-      setStartY(offsetY);
+    const { offsetX, offsetY } = e.nativeEvent;
+    setStartX(offsetX);
+    setStartY(offsetY);
+  
+    if (isPencilDrawing && isMouseDown) {
       prevX.current = offsetX; // Track previous X coordinate
       prevY.current = offsetY;
-
     }
-  }
+  };
 
   const drawPencil = (x, y) => {
     if (!isPencilDrawing || !isMouseDown) return;
@@ -141,8 +129,6 @@ function App() {
     }
   }
 
-  
-
   const drawLine = () => {
     if (!isLineDrawing || startEndCoordinatesNull()) return;
 
@@ -155,37 +141,26 @@ function App() {
   }
 
   const handleMouseUp = () => {
+    setIsDrawing(false);
+    setIsLineDrawing(false);
+    setIsPencilDrawing(false);
+    setEndX(null);
+    setEndY(null);
+    setStartX(null);
+    setStartY(null);
+  
     if (isDrawing) {
-      setIsDrawing(false);
-      setEndX(null);
-      setEndY(null);
-      setStartX(null);
-      setStartY(null);
       drawRectangle();
     } else if (isLineDrawing) {
-      setIsLineDrawing(false);
-      setEndX(null);
-      setEndY(null);
-      setStartX(null);
-      setStartY(null);
       drawLine();
-    } else if (isPencilDrawing) {
-      setIsPencilDrawing(false);
-      setEndX(null);
-      setEndY(null);
-      setStartX(null);
-      setStartY(null);
     }
-  }
+  };
 
   const drawRectangle = () => {
     if (!isDrawing || startEndCoordinatesNull()) return;
-
     const context = contextRef.current;
-
     const rectWidth = endX - startX;
     const rectHeight = endY - startY;
-
     context.strokeRect(startX, startY, rectWidth, rectHeight);
   };
 
