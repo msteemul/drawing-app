@@ -192,17 +192,17 @@ function App() {
           </canvas>
         </div>
         <div className='h-[5%] bg-neutral-700 flex justify-center'>
-          <div className='bg-neutral-700  flex items-center'>
+          <div className='bg-neutral-700  flex items-center gap-1'>
             <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <MdOutlineRotateLeft color='white' /> </button>
-            <button onClick={setDrawingMode} className={` ${isDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[35px] rounded-xl flex items-center justify-center`}> <BiRectangle color='white' /> </button>
-            <button onClick={setLineMode} className={` ${isLineDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[35px] rounded-xl flex items-center justify-center`}> <AiOutlineLine color='white' /> </button>
-            <button onClick={setPencilMode} className={` ${isPencilDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[35px] rounded-xl flex items-center justify-center`}> <HiOutlinePencil color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BsEraser color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BiText color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <BsArrowDownLeft color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <FaRegHandPaper color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <MdOutlineRotateRight color='white' /> </button>
-            <button className='bg-neutral-800 h-full p-2 w-[35px] rounded-xl flex items-center justify-center'> <LiaDownloadSolid color='white' /> </button>
+            <button onClick={setDrawingMode} className={` ${isDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[40px] rounded-xl flex items-center justify-center`}> <BiRectangle color='white' /> </button>
+            <button onClick={setLineMode} className={` ${isLineDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[40px] rounded-xl flex items-center justify-center`}> <AiOutlineLine color='white' /> </button>
+            <button onClick={setPencilMode} className={` ${isPencilDrawing ? 'bg-neutral-400' : 'bg-neutral-800'} h-full p-2 w-[40px] rounded-xl flex items-center justify-center`}> <HiOutlinePencil color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <BsEraser color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <BiText color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <BsArrowDownLeft color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <FaRegHandPaper color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <MdOutlineRotateRight color='white' /> </button>
+            <button className='bg-neutral-800 h-full p-2 w-[40px] rounded-xl flex items-center justify-center'> <LiaDownloadSolid color='white' /> </button>
 
           </div>
         </div>
